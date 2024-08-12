@@ -79,9 +79,15 @@ class Solution:
             return True
 
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        pass
+        # https://neetcode.io/problems/two-integer-sum
+        for i in range(len(nums)):
+            for j in range(i):
+                if i != j and nums[i] + nums[j] == target:
+                    return [j,i]
+                    
+            
 
 
 solution = Solution()
 
-print(solution.isAnagram(s="jam", t="jar"))
+print(solution.twoSum(nums = [5,5], target = 10))
