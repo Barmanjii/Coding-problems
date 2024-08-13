@@ -27,14 +27,21 @@ class Solution:
 
     def romanToInt(self, s: str) -> int:
         # https://leetcode.com/problems/roman-to-integer/
-        roman_numerals = {'I': 1, 'V': 5, 'X': 10,
-                          'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        roman_numerals = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000,
+        }
         resultant = 0
         i = 0
         n = len(s)
         while i < n:
-            if i < n-1 and roman_numerals[s[i]] < roman_numerals[s[i+1]]:
-                resultant += roman_numerals[s[i+1]] - roman_numerals[s[i]]
+            if i < n - 1 and roman_numerals[s[i]] < roman_numerals[s[i + 1]]:
+                resultant += roman_numerals[s[i + 1]] - roman_numerals[s[i]]
                 i += 2
             else:
                 resultant += roman_numerals[s[i]]
@@ -83,11 +90,9 @@ class Solution:
         for i in range(len(nums)):
             for j in range(i):
                 if i != j and nums[i] + nums[j] == target:
-                    return [j,i]
-                    
-            
+                    return [j, i]
 
 
 solution = Solution()
 
-print(solution.twoSum(nums = [5,5], target = 10))
+print(solution.twoSum(nums=[5, 5], target=10))
