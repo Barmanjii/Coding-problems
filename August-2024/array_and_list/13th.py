@@ -11,7 +11,7 @@ class Solution:
         j = 0
 
         # Base conditions
-        if s == "":
+        if s == '':
             return True
 
         if S > T:
@@ -19,19 +19,19 @@ class Solution:
 
         for i in range(T):
             if t[i] == s[j]:
-                if j == S - 1:
+                if j == S-1:
                     return True
                 j += 1
         return False
 
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        # https://neetcode.io/problems/anagram-groups
+        # https://neetcode.io/problems/anagram-groupsc
         res = defaultdict(list)
 
         for current_string in strs:
             count = [0] * 26
             for char in current_string:
-                count[ord(char) - ord("a")] += 1
+                count[ord(char)-ord("a")] += 1
 
             res[tuple(count)].append(current_string)
 
@@ -40,4 +40,5 @@ class Solution:
 
 solution = Solution()
 
-print(solution.groupAnagrams(strs=["act", "pots", "tops", "cat", "stop", "hat"]))
+print(solution.groupAnagrams(
+    strs=["act", "pots", "tops", "cat", "stop", "hat"]))
