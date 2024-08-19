@@ -1,13 +1,25 @@
-from collections import defaultdict
 from typing import List
 
 
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        pass
+    # https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+    def maxProfit(self, prices: List[int]) -> int:
+        max_profit = 0
+        min_price = float('inf')
+
+        for price in prices:
+            if price < min_price:
+                min_price = price
+
+            profit = price - min_price
+
+            if profit > max_profit:
+                max_profit = profit
+
+        return max_profit
 
 
 solution = Solution()
 
-print(solution.topKFrequent(
-    nums=[1, 2, 2, 3, 3, 3], k=2))
+print(solution.maxProfit(
+    prices=[1, 2]))
