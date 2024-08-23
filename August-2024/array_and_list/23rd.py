@@ -20,6 +20,7 @@ class Solution:
             i += 1
         return output
 
+    # https://neetcode.io/problems/string-encode-and-decode
     def encode(self, strs: List[str]) -> str:
         result = ""
         for i in strs:
@@ -41,8 +42,22 @@ class Solution:
         print(res)
         return res
 
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        # https://neetcode.io/problems/products-of-array-discluding-self
+        res = [1] * len(nums)
+        prefix = 1
+        for i in range(len(nums)):
+            res[i] = prefix
+            prefix *= nums[i]
+        postfix = 1
+        for j in range(len(nums)-1, -1, -1):
+            res[j] *= postfix
+            postfix *= nums[j]
+
+        return res
+
 
 solution = Solution()
 
-print(solution.encode(
-    strs=["neet", "code", "love", "you"]))
+print(solution.productExceptSelf(
+    nums=[1, 2, 3, 4]))
