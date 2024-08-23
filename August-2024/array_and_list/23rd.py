@@ -20,8 +20,29 @@ class Solution:
             i += 1
         return output
 
+    def encode(self, strs: List[str]) -> str:
+        result = ""
+        for i in strs:
+            result += str(len(i)) + "#" + i
+        self.decode(s=result)
+        return result
+
+    def decode(self, s: str) -> List[str]:
+        res, i = [], 0
+        while i < len(s):
+            j = i
+            while s[j] != "#":
+                j += 1
+
+            n = int(s[i:j])
+
+            res.append(s[j+1:j+1+n])
+            i = n+j+1
+        print(res)
+        return res
+
 
 solution = Solution()
 
-print(solution.summaryRanges(
-    nums=[0, 1, 2, 4, 5, 7]))
+print(solution.encode(
+    strs=["neet", "code", "love", "you"]))
